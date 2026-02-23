@@ -1,1 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SUNBAXY OPD</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      width: 100%;
+      max-width: 400px;
+      overflow: hidden;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #1b5e20, #2e7d32);
+      padding: 24px 20px 20px;
+      text-align: center;
+      color: #fff;
+    }
+
+    .logo-wrap {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 12px;
+      border: 3px solid rgba(255,255,255,0.4);
+      background: #fff;
+    }
+
+    .logo-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .header h1 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+
+    .header p {
+      font-size: 0.78rem;
+      opacity: 0.85;
+      margin-top: 3px;
+    }
+
+    .form-body {
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #388e3c;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1.5px solid #c8e6c9;
+      border-radius: 10px;
+      font-size: 0.95rem;
+      color: #212121;
+      background: #f9fbe7;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      font-family: inherit;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: #2e7d32;
+      box-shadow: 0 0 0 3px rgba(46,125,50,0.12);
+      background: #fff;
+    }
+
+    .field textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: #fff;
+      border: none;
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 4px 14px rgba(37,211,102,0.35);
+      width: 100%;
+      margin-top: 4px;
+    }
+
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 6px 20px rgba(37,211,102,0.45); }
+    .btn:active { transform: translateY(0); }
+
+    .btn svg { width: 20px; height: 20px; fill: #fff; flex-shrink: 0; }
+
+    .footer {
+      text-align: center;
+      font-size: 0.7rem;
+      color: #9e9e9e;
+      padding: 0 20px 18px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="header">
+    <div class="logo-wrap">
+      <img src="https://github.com/pariflex1/SUNBAXY/blob/main/opd/opd.webp?raw=true" alt="SUNBAXY Logo" onerror="this.style.display='none'"/>
+    </div>
+    <h1>SUNBAXY OPD</h1>
+    <p>Online Patient Appointment Form</p>
+  </div>
+
+  <form class="form-body" id="opdForm" onsubmit="sendToWhatsApp(event)">
+    <div class="field">
+      <label for="name">Patient Name</label>
+      <input type="text" id="name" placeholder="Enter full name" required />
+    </div>
+
+    <div class="field">
+      <label for="date">Date</label>
+      <input type="date" id="date" required />
+    </div>
+
+    <div class="field">
+      <label for="note">Note / Symptoms</label>
+      <textarea id="note" placeholder="Describe symptoms or any note…"></textarea>
+    </div>
+
+    <button type="submit" class="btn">
+      <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+        <path d="M16.003 2.667C8.637 2.667 2.667 8.637 2.667 16c0 2.347.64 4.64 1.853 6.64L2.667 29.333l6.88-1.813A13.28 13.28 0 0016.003 29.333C23.37 29.333 29.333 23.363 29.333 16S23.37 2.667 16.003 2.667zm6.547 18.4c-.267.747-1.547 1.44-2.133 1.493-.547.053-1.067.267-3.6-.747-3.04-1.227-4.987-4.32-5.147-4.52-.16-.2-1.28-1.707-1.28-3.253s.8-2.293 1.12-2.613c.267-.267.587-.333.787-.333h.56c.187 0 .44-.053.693.533l.96 2.347c.08.187.133.4.027.613l-.4.747-.4.56c.267.453 1.12 1.84 2.373 2.72 1.6 1.093 2.88 1.413 3.2 1.573.267.133.427.107.587-.053l.96-1.147c.187-.24.4-.16.667-.053l2.64 1.24c.267.133.44.2.507.32.053.133.053.747-.213 1.493z"/>
+      </svg>
+      Send via WhatsApp
+    </button>
+  </form>
+
+  <div class="footer">Powered by SUNBAXY &bull; All details sent securely via WhatsApp</div>
+</div>
+
+<script>
+  // Set today as default and block past dates
+  const today = new Date().toLocaleDateString('en-CA');
+  const dateInput = document.getElementById('date');
+  dateInput.value = today;
+  dateInput.min = today;
+
+  function sendToWhatsApp(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('name').value.trim();
+    const date = document.getElementById('date').value;
+    const note = document.getElementById('note').value.trim();
+
+    // Format date nicely
+    const dateObj = new Date(date + 'T00:00:00');
+    const formattedDate = dateObj.toLocaleDateString('en-IN', { day: '2-digit', month: 'long', year: 'numeric' });
+
+    const message =
+`🏥 *SUNBAXY OPD Appointment*
+━━━━━━━━━━━━━━━━
+👤 *Name:* ${name}
+📅 *Date:* ${formattedDate}
+📝 *Note:* ${note || 'No note provided'}
+━━━━━━━━━━━━━━━━
+_Sent via SUNBAXY OPD Form_`;
+
+    const encoded = encodeURIComponent(message);
+    const url = `https://wa.me/919277304286?text=${encoded}`;
+    window.open(url, '_blank');
+  }
+</script>
+
+</body>
+</html>
